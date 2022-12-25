@@ -17,6 +17,9 @@
 		65842D6B2958759900673EDF /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65842D6A2958759900673EDF /* Media.swift */; };
 		65842D6F295877EE00673EDF /* SearchMediaUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65842D6E295877EE00673EDF /* SearchMediaUseCase.swift */; };
 		65842D71295887BC00673EDF /* MediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65842D70295887BC00673EDF /* MediaRepository.swift */; };
+		65842D7529588ABF00673EDF /* Button + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65842D7429588ABF00673EDF /* Button + Extension.swift */; };
+		65842D7829588B0300673EDF /* MovieListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65842D7729588B0300673EDF /* MovieListItemView.swift */; };
+		65842D7B29588F1E00673EDF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 65842D7A29588F1E00673EDF /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,8 @@
 		65842D6A2958759900673EDF /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		65842D6E295877EE00673EDF /* SearchMediaUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMediaUseCase.swift; sourceTree = "<group>"; };
 		65842D70295887BC00673EDF /* MediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRepository.swift; sourceTree = "<group>"; };
+		65842D7429588ABF00673EDF /* Button + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button + Extension.swift"; sourceTree = "<group>"; };
+		65842D7729588B0300673EDF /* MovieListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65842D7B29588F1E00673EDF /* Kingfisher in Frameworks */,
 				65842D642958629E00673EDF /* RealmSwift in Frameworks */,
 				65842D622958629E00673EDF /* Realm in Frameworks */,
 				65842D5F2958621F00673EDF /* Alamofire in Frameworks */,
@@ -93,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				65842D72295889B200673EDF /* MediaList */,
+				65842D7329588A7400673EDF /* Utils */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -142,8 +149,17 @@
 		65842D72295889B200673EDF /* MediaList */ = {
 			isa = PBXGroup;
 			children = (
+				65842D7729588B0300673EDF /* MovieListItemView.swift */,
 			);
 			path = MediaList;
+			sourceTree = "<group>";
+		};
+		65842D7329588A7400673EDF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				65842D7429588ABF00673EDF /* Button + Extension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +182,7 @@
 				65842D5E2958621F00673EDF /* Alamofire */,
 				65842D612958629E00673EDF /* Realm */,
 				65842D632958629E00673EDF /* RealmSwift */,
+				65842D7A29588F1E00673EDF /* Kingfisher */,
 			);
 			productName = "Ex-1";
 			productReference = 65842D4C29585F5B00673EDF /* Ex-1.app */;
@@ -198,6 +215,7 @@
 			packageReferences = (
 				65842D5D2958621F00673EDF /* XCRemoteSwiftPackageReference "Alamofire" */,
 				65842D602958629E00673EDF /* XCRemoteSwiftPackageReference "realm-swift" */,
+				65842D7929588F1E00673EDF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 65842D4D29585F5B00673EDF /* Products */;
 			projectDirPath = "";
@@ -228,8 +246,10 @@
 				65842D71295887BC00673EDF /* MediaRepository.swift in Sources */,
 				65842D5229585F5B00673EDF /* ContentView.swift in Sources */,
 				65842D5029585F5B00673EDF /* Ex_1App.swift in Sources */,
+				65842D7829588B0300673EDF /* MovieListItemView.swift in Sources */,
 				65842D6F295877EE00673EDF /* SearchMediaUseCase.swift in Sources */,
 				65842D6B2958759900673EDF /* Media.swift in Sources */,
+				65842D7529588ABF00673EDF /* Button + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +476,14 @@
 				kind = branch;
 			};
 		};
+		65842D7929588F1E00673EDF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -473,6 +501,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 65842D602958629E00673EDF /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		65842D7A29588F1E00673EDF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65842D7929588F1E00673EDF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
