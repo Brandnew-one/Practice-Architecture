@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Media: Equatable {
+struct Media: Equatable, Identifiable {
+  let id: UUID = UUID()
   let name: String
   let originName: String
   let posterURL: String
