@@ -10,6 +10,9 @@
 		6531CD202959D8590058F77A /* MediaListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531CD1F2959D8590058F77A /* MediaListViewModel.swift */; };
 		6531CD222959DB010058F77A /* BindingSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531CD212959DB010058F77A /* BindingSubject.swift */; };
 		6531CD242959DB8A0058F77A /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531CD232959DB8A0058F77A /* ViewModelType.swift */; };
+		656B2AB0296945CC00F6928F /* MediaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B2AAF296945CC00F6928F /* MediaDetailView.swift */; };
+		656B2AB2296946E800F6928F /* MediaDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B2AB1296946E800F6928F /* MediaDetailViewModel.swift */; };
+		656B2AB529694C5000F6928F /* Double + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B2AB429694C5000F6928F /* Double + Extension.swift */; };
 		65842D5029585F5B00673EDF /* Ex_1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65842D4F29585F5B00673EDF /* Ex_1App.swift */; };
 		65842D5229585F5B00673EDF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65842D5129585F5B00673EDF /* ContentView.swift */; };
 		65842D5429585F5B00673EDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65842D5329585F5B00673EDF /* Assets.xcassets */; };
@@ -30,6 +33,9 @@
 		6531CD1F2959D8590058F77A /* MediaListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListViewModel.swift; sourceTree = "<group>"; };
 		6531CD212959DB010058F77A /* BindingSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingSubject.swift; sourceTree = "<group>"; };
 		6531CD232959DB8A0058F77A /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		656B2AAF296945CC00F6928F /* MediaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailView.swift; sourceTree = "<group>"; };
+		656B2AB1296946E800F6928F /* MediaDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailViewModel.swift; sourceTree = "<group>"; };
+		656B2AB429694C5000F6928F /* Double + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extension.swift"; sourceTree = "<group>"; };
 		65842D4C29585F5B00673EDF /* Ex-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ex-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65842D4F29585F5B00673EDF /* Ex_1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ex_1App.swift; sourceTree = "<group>"; };
 		65842D5129585F5B00673EDF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +64,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		656B2AAE296945BB00F6928F /* MediaDetail */ = {
+			isa = PBXGroup;
+			children = (
+				656B2AAF296945CC00F6928F /* MediaDetailView.swift */,
+				656B2AB1296946E800F6928F /* MediaDetailViewModel.swift */,
+			);
+			path = MediaDetail;
+			sourceTree = "<group>";
+		};
+		656B2AB329694C4400F6928F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				656B2AB429694C5000F6928F /* Double + Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		65842D4329585F5B00673EDF = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +129,8 @@
 		65842D66295873FA00673EDF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				656B2AB329694C4400F6928F /* Extension */,
+				656B2AAE296945BB00F6928F /* MediaDetail */,
 				65842D72295889B200673EDF /* MediaList */,
 				65842D7329588A7400673EDF /* Utils */,
 			);
@@ -261,7 +286,10 @@
 				65842D5029585F5B00673EDF /* Ex_1App.swift in Sources */,
 				65842D7829588B0300673EDF /* MediaListItemView.swift in Sources */,
 				65842D6F295877EE00673EDF /* SearchMediaUseCase.swift in Sources */,
+				656B2AB0296945CC00F6928F /* MediaDetailView.swift in Sources */,
 				65842D7D295891F800673EDF /* MediaListView.swift in Sources */,
+				656B2AB529694C5000F6928F /* Double + Extension.swift in Sources */,
+				656B2AB2296946E800F6928F /* MediaDetailViewModel.swift in Sources */,
 				65842D6B2958759900673EDF /* Media.swift in Sources */,
 				65842D7529588ABF00673EDF /* Button + Extension.swift in Sources */,
 				6531CD222959DB010058F77A /* BindingSubject.swift in Sources */,
