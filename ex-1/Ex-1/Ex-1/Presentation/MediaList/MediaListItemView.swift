@@ -34,6 +34,8 @@ struct MediaListItemView: View {
     }
     .frame(height: 100)
     .padding()
+    .background(Color.init(.systemGray6))
+    .cornerRadius(25)
   }
 }
 
