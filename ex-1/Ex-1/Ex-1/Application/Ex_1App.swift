@@ -11,7 +11,7 @@ import SwiftUI
 struct Ex_1App: App {
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      MediaListView(viewModel: AppDI.shared.mediaListViewModel())
     }
   }
 }
