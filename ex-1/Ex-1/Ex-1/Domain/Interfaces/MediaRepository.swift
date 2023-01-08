@@ -9,7 +9,12 @@ import Combine
 import Foundation
 
 protocol MediaRepository {
-  func fetchMedia(
+  func fetchTv(
+    query: String,
+    page: Int
+  ) -> AnyPublisher<MediaPage, Error>
+
+  func fetchMovie(
     query: String,
     page: Int
   ) -> AnyPublisher<MediaPage, Error>

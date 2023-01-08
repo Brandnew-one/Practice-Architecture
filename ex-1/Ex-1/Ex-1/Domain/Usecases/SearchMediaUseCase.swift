@@ -9,7 +9,12 @@ import Combine
 import Foundation
 
 protocol SearchMediaUseCase {
-  func excute(
+  func movieExcute(
+    query: String,
+    page: Int
+  ) -> AnyPublisher<MediaPage, Error>
+
+  func tvExcute(
     query: String,
     page: Int
   ) -> AnyPublisher<MediaPage, Error>
@@ -22,10 +27,17 @@ final class DefaultSearchMediaUseCase: SearchMediaUseCase {
     self.mediaRepository = mediaRepository
   }
 
-  func excute(
+  func movieExcute(
     query: String,
     page: Int
   ) -> AnyPublisher<MediaPage, Error> {
-    mediaRepository.fetchMedia(query: query, page: page)
+    mediaRepository.fetchMovie(query: query, page: page)
+  }
+
+  func tvExcute(
+    query: String,
+    page: Int
+  ) -> AnyPublisher<MediaPage, Error> {
+    mediaRepository.fetchTv(query: query, page: page)
   }
 }
