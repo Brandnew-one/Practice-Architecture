@@ -41,13 +41,13 @@ final class MediaListViewModel: ViewModelType {
   }
 
   func transform() {
-    input.searchButtonSub
-      .throttle(for: 0.1, scheduler: RunLoop.main, latest: false)
-      .flatMap { [weak self] _ -> AnyPublisher<MediaPage, Never> in
+    input.searchMediaSub.subject
+      .debounce(for: 0.2, scheduler: RunLoop.main)
+      .flatMap { [weak self] search -> AnyPublisher<MediaPage, Never> in
         guard let self = self else {
           return Just(MediaPage(page: -1, totalPages: -1, medias: [])).eraseToAnyPublisher()
         }
-        return self.searchMediaUsecase.excute(query: self.input.searchMediaSub.value, page: 1)
+        return self.searchMediaUsecase.tvExcute(query: search, page: 1)
           .replaceError(with: MediaPage(page: -1, totalPages: -1, medias: []))
           .eraseToAnyPublisher()
       }
@@ -58,5 +58,4 @@ final class MediaListViewModel: ViewModelType {
       })
       .store(in: &cancellables)
   }
-
 }

@@ -13,11 +13,22 @@ struct MediaListView: View {
 
   var body: some View {
     NavigationView {
-      LazyVStack {
-        ForEach(viewModel.output.medias, id: \.id) {
-          MediaListItemView(media: $0)
+      ScrollView {
+        LazyVStack {
+          ForEach(viewModel.output.medias, id: \.id) { media in
+            NavigationLink(
+              destination: {
+                MediaDetailView(viewModel: MediaDetailViewModel(media: media))
+              },
+              label: { MediaListItemView(media: media) }
+            )
+          }
         }
+        .padding(.top, 20)
+        .padding([.leading, .trailing], 12)
       }
+      .navigationTitle("TV Search")
+      .navigationBarTitleDisplayMode(.inline)
       .searchable(text: $viewModel.input.searchMediaSub.value)
     }
   }

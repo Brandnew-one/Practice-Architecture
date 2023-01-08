@@ -33,6 +33,7 @@ struct MediaListItemView: View {
       }
     }
     .frame(height: 100)
+    .frame(maxWidth: .infinity)
     .padding()
     .background(Color.init(.systemGray6))
     .cornerRadius(25)
