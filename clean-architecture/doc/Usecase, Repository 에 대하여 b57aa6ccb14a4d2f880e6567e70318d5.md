@@ -1,6 +1,6 @@
 # Usecase, Repository 에 대하여
 
-![Untitled](Usecase,%20Repository%20%E1%84%8B%E1%85%A6%20%E1%84%83%E1%85%A2%E1%84%92%E1%85%A1%E1%84%8B%E1%85%A7%20b57aa6ccb14a4d2f880e6567e70318d5/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/88618825/211225312-d1d230dd-bbf3-43aa-8e71-8737a6c3b346.png)
 
 - Domain Layer(= Entity, UseCase, Repository interface)
 - Presentation Layer(= view, viewmodel)
