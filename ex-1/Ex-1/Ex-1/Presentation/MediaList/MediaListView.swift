@@ -11,6 +11,8 @@ struct MediaListView: View {
   @StateObject
   var viewModel: MediaListViewModel
 
+  let appContainer: AppContainer
+
   var body: some View {
     NavigationView {
       ScrollView {
@@ -18,9 +20,15 @@ struct MediaListView: View {
           ForEach(viewModel.output.medias, id: \.id) { media in
             NavigationLink(
               destination: {
-                MediaDetailView(viewModel: MediaDetailViewModel(media: media))
+                NavigationLazyView(
+                  MediaDetailView(
+                    viewModel: appContainer.mediaDetailViewModel(media)
+                  )
+                )
               },
-              label: { MediaListItemView(media: media) }
+              label: {
+                MediaListItemView(media: media)
+              }
             )
           }
         }
