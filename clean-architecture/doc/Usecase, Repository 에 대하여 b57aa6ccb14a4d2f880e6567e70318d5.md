@@ -24,6 +24,8 @@
 
 지난번에 클린 아키텍처의 각 Layer들을 공부할 때 Entity는 Layer가장 안쪽에 위치하며 데이터의 본질이라고 했는데 대부분의 클린 아키텍처 예제들을 보면 Usecase는 Repository(API, DB)로 부터 Entity들을 얻어내고 있는것을 확인할 수 있다.
 
+***
+
 ### 2) Usecase에서 왜 비즈니스 로직을 담당하고 있을까?
 
 지금까지 프로젝트를 구성할 때 일반적으로 API, DB를 담당하고 있는 싱글톤 클래스들로 구성하고 각각의 Viewmodel에서 위의 클래스들을 통해서 얻을 수 있는 Model이 필요하면 불러서 사용하는 형태로 구성해왔다.
@@ -42,6 +44,8 @@ MVVM 패턴에서 ViewModel은 View를 참조하지 않기 때문에 1:n 관계�
 (물론 본인의 MVVM에 대한 이해가 부족해 위와 같이 코드를 작성했을 수도 있다)
 
 하지만 비즈니스 로직을 Usecase에서 담당하게 된다면, 만약 다른 ViewModel에서 현재 ViewModel에서 사용하고 있는 비즈니스 로직이 필요한 경우, 동일한 Usecase를 사용하기만 하면 중복되는 코드를 손쉽게 줄일 수 있다.
+
+***
 
 ### 3) 그럼 왜 Usecase와 Repository가 나눠져 있을까?
 
@@ -114,4 +118,18 @@ API Call의 Response가 변경되면 어떤 일이 발생할까? Data Layer에 �
 
 DTO를 사용하게 되면 API Response가 변경되는 경우 , DTO에 정의한 .toDomain 메서드만 수정하면 된다.
 
-그럼 Repository와 Usecase는 왜 분리되어 있을까?
+***
+
+### 그럼 Repository와 Usecase는 왜 분리되어 있을까?
+
+[링크](https://proandroiddev.com/why-you-need-use-cases-interactors-142e8a6fe576) 에서 설명하기로는 
+* 일관성
+* 미래의 변경에 대한 보호
+
+정도로 Usecase의 사용을 적극 권장하고 있다. 어느정도 동의하는 부분이다. 
+
+ 구현되어 있는 클린 아키텍처 예제들 중 어떤 ViewModel에서는 Usecase가 아닌 Repository를 바로 사용하고 있는 것들도 있었는데 개인적으로 조금 혼란스러웠었다.
+ 
+ 그리고 ViewModel에서 Usecase를 알고 있으면 ViewModel은 Repository를 모르고 있는 상태가 되기 때문에 자연스럽게 책임분리가 된다.
+ 
+ 즉, ViewModel 자체는 비즈니스로직을 모르고 단순히 프레젠테이션 로직만 처리해주면 된다!
