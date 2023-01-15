@@ -11,6 +11,8 @@ struct RootTabView: View {
   @State
   var tabIndex: TabItem = .search
 
+  let appContainer: AppContainer
+
   var body: some View {
     tabView
   }
@@ -20,7 +22,7 @@ extension RootTabView {
   @ViewBuilder
   var tabView: some View {
     TabView(selection: $tabIndex) {
-      Color.green
+      MediaListView(viewModel: appContainer.mediaListViewModel(), appContainer: appContainer)
         .tag(TabItem.search)
         .tabItem {
           TabItem.search.image
@@ -28,7 +30,7 @@ extension RootTabView {
           Text(TabItem.search.title)
         }
 
-      Color.yellow
+      SavedMediaListView(viewModel: appContainer.savedMediaListViewModel(), appContainer: appContainer)
         .tag(TabItem.saved)
         .tabItem {
           TabItem.saved.image
@@ -36,11 +38,5 @@ extension RootTabView {
           Text(TabItem.saved.title)
         }
     }
-  }
-}
-
-struct RootTabView_Previews: PreviewProvider {
-  static var previews: some View {
-    RootTabView()
   }
 }

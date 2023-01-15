@@ -9,5 +9,6 @@ import Foundation
 
 protocol AppContainer {
   func mediaListViewModel() -> MediaListViewModel
+  func savedMediaListViewModel() -> SavedMediaListViewModel
   func mediaDetailViewModel(_ media: Media) -> MediaDetailViewModel
 }
