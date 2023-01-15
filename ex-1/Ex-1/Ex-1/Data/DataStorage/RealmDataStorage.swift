@@ -36,17 +36,9 @@ extension RealmDataStorage {
 
   func find(_ media: MediaRealmDTO) -> Bool {
     if let realm = realm {
-      do {
-        try realm.write {
-          if let _ = realm.objects(MediaRealmDTO.self).filter("id == \(media.id)").first {
-            print("이미 존재")
-            return true
-          } else {
-            return false
-          }
-        }
-      } catch {
-        print("Error adding media to realm", error)
+      if let _ = realm.objects(MediaRealmDTO.self).filter("id == \(media.id)").first {
+        return true
+      } else {
         return false
       }
     }

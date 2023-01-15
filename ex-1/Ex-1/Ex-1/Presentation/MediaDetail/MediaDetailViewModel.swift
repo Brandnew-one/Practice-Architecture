@@ -79,7 +79,5 @@ extension MediaDetailViewModel {
     output.rating = "\(media.rating.ratingType)"
     output.overView = media.overview
     output.isSaved = usecase.findMedia(media)
-    print("isSaved:", output.isSaved)
-    print("isSaved:", usecase.findMedia(media))
   }
 }
