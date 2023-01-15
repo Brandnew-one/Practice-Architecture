@@ -23,6 +23,18 @@ final class AppDI: AppContainer {
     return MediaListViewModel(searchMediaUsecase: usecase)
   }
 
+  func savedMediaListViewModel() -> SavedMediaListViewModel {
+    let mediaRepository: MediaRepository = MediaRepositoryImpl()
+    let mediaDetailRepository: MediaDetailRepository = MediaDetailRepositoryImpl(RealmDataStorage.shared)
+
+    let usecase: DefaultSearchMediaUseCase = DefaultSearchMediaUseCase(
+      mediaRepository: mediaRepository,
+      mediaDetailRepository: mediaDetailRepository
+    )
+
+    return SavedMediaListViewModel(searchMediaUsecase: usecase)
+  }
+
   func mediaDetailViewModel(_ media: Media) -> MediaDetailViewModel {
     let mediaRepository: MediaRepository = MediaRepositoryImpl()
     let mediaDetailRepository: MediaDetailRepository = MediaDetailRepositoryImpl(RealmDataStorage.shared)
