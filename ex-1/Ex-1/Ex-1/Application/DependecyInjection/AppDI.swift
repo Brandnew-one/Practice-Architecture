@@ -7,14 +7,31 @@
 
 import Foundation
 
-final class AppDI {
+final class AppDI: AppContainer {
   static let shared = AppDI()
   private init() { }
 
   func mediaListViewModel() -> MediaListViewModel {
-    let repository: MediaRepository = MediaRepositoryImpl()
-    let usecase: DefaultSearchMediaUseCase = DefaultSearchMediaUseCase(mediaRepository: repository)
+    let mediaRepository: MediaRepository = MediaRepositoryImpl()
+    let mediaDetailRepository: MediaDetailRepository = MediaDetailRepositoryImpl(RealmDataStorage.shared)
+
+    let usecase: DefaultSearchMediaUseCase = DefaultSearchMediaUseCase(
+      mediaRepository: mediaRepository,
+      mediaDetailRepository: mediaDetailRepository
+    )
 
     return MediaListViewModel(searchMediaUsecase: usecase)
+  }
+
+  func mediaDetailViewModel(_ media: Media) -> MediaDetailViewModel {
+    let mediaRepository: MediaRepository = MediaRepositoryImpl()
+    let mediaDetailRepository: MediaDetailRepository = MediaDetailRepositoryImpl(RealmDataStorage.shared)
+
+    let usecase: DefaultSearchMediaUseCase = DefaultSearchMediaUseCase(
+      mediaRepository: mediaRepository,
+      mediaDetailRepository: mediaDetailRepository
+    )
+
+    return MediaDetailViewModel(media: media, usecase: usecase)
   }
 }
