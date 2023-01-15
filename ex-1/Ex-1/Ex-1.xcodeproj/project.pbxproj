@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651FE5112973C9A2003A563B /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FE5102973C9A2003A563B /* RootTabView.swift */; };
+		651FE5142973CBB5003A563B /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FE5132973CBB5003A563B /* TabItem.swift */; };
+		651FE5182973D3EB003A563B /* MediaRealmDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FE5172973D3EB003A563B /* MediaRealmDTO.swift */; };
+		651FE51A2973DE51003A563B /* RealmDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FE5192973DE51003A563B /* RealmDataStorage.swift */; };
+		651FE51E2973E38E003A563B /* MediaDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FE51D2973E38E003A563B /* MediaDetailRepository.swift */; };
+		651FE5202973F0B5003A563B /* MediaDetailRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FE51F2973F0B5003A563B /* MediaDetailRepositoryImpl.swift */; };
+		651FE5232973FE87003A563B /* APPContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FE5222973FE87003A563B /* APPContainer.swift */; };
+		651FE52529742423003A563B /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651FE52429742423003A563B /* NavigationLazyView.swift */; };
 		6531CD202959D8590058F77A /* MediaListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531CD1F2959D8590058F77A /* MediaListViewModel.swift */; };
 		6531CD222959DB010058F77A /* BindingSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531CD212959DB010058F77A /* BindingSubject.swift */; };
 		6531CD242959DB8A0058F77A /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531CD232959DB8A0058F77A /* ViewModelType.swift */; };
@@ -37,6 +45,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		651FE5102973C9A2003A563B /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		651FE5132973CBB5003A563B /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		651FE5172973D3EB003A563B /* MediaRealmDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRealmDTO.swift; sourceTree = "<group>"; };
+		651FE5192973DE51003A563B /* RealmDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataStorage.swift; sourceTree = "<group>"; };
+		651FE51D2973E38E003A563B /* MediaDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailRepository.swift; sourceTree = "<group>"; };
+		651FE51F2973F0B5003A563B /* MediaDetailRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailRepositoryImpl.swift; sourceTree = "<group>"; };
+		651FE5222973FE87003A563B /* APPContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPContainer.swift; sourceTree = "<group>"; };
+		651FE52429742423003A563B /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		6531CD1F2959D8590058F77A /* MediaListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListViewModel.swift; sourceTree = "<group>"; };
 		6531CD212959DB010058F77A /* BindingSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingSubject.swift; sourceTree = "<group>"; };
 		6531CD232959DB8A0058F77A /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
@@ -78,6 +94,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		651FE50F2973C983003A563B /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				651FE5132973CBB5003A563B /* TabItem.swift */,
+				651FE5102973C9A2003A563B /* RootTabView.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		651FE5152973CF32003A563B /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				651FE5192973DE51003A563B /* RealmDataStorage.swift */,
+				651FE5162973D3C8003A563B /* DataMapping */,
+			);
+			path = DataStorage;
+			sourceTree = "<group>";
+		};
+		651FE5162973D3C8003A563B /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				651FE5172973D3EB003A563B /* MediaRealmDTO.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		651FE5212973FE77003A563B /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				651FE5222973FE87003A563B /* APPContainer.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
 		656B2AAE296945BB00F6928F /* MediaDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				656B2AB72969519500F6928F /* Network */,
+				651FE5152973CF32003A563B /* DataStorage */,
 				656B2ACC29696ABE00F6928F /* Repositories */,
 			);
 			path = Data;
@@ -137,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				656B2ACD296AABEB00F6928F /* MediaRepositoryImpl.swift */,
+				651FE51F2973F0B5003A563B /* MediaDetailRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -198,6 +250,8 @@
 		65842D66295873FA00673EDF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				651FE5212973FE77003A563B /* Container */,
+				651FE50F2973C983003A563B /* Tab */,
 				656B2AB329694C4400F6928F /* Extension */,
 				656B2AAE296945BB00F6928F /* MediaDetail */,
 				65842D72295889B200673EDF /* MediaList */,
@@ -236,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				65842D70295887BC00673EDF /* MediaRepository.swift */,
+				651FE51D2973E38E003A563B /* MediaDetailRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -264,6 +319,7 @@
 				65842D7429588ABF00673EDF /* Button + Extension.swift */,
 				6531CD212959DB010058F77A /* BindingSubject.swift */,
 				6531CD232959DB8A0058F77A /* ViewModelType.swift */,
+				651FE52429742423003A563B /* NavigationLazyView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -349,22 +405,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651FE5112973C9A2003A563B /* RootTabView.swift in Sources */,
 				656B2AC82969618100F6928F /* NetworkLogger.swift in Sources */,
+				651FE51A2973DE51003A563B /* RealmDataStorage.swift in Sources */,
 				6531CD242959DB8A0058F77A /* ViewModelType.swift in Sources */,
 				65842D71295887BC00673EDF /* MediaRepository.swift in Sources */,
+				651FE5232973FE87003A563B /* APPContainer.swift in Sources */,
 				656B2ACE296AABEB00F6928F /* MediaRepositoryImpl.swift in Sources */,
 				656B2AC029695A5A00F6928F /* MediaRequestDTO.swift in Sources */,
+				651FE5202973F0B5003A563B /* MediaDetailRepositoryImpl.swift in Sources */,
 				65842D5029585F5B00673EDF /* Ex_1App.swift in Sources */,
+				651FE5142973CBB5003A563B /* TabItem.swift in Sources */,
 				656B2AC229695A8800F6928F /* MediaResponseDTO.swift in Sources */,
 				65842D7829588B0300673EDF /* MediaListItemView.swift in Sources */,
 				65842D6F295877EE00673EDF /* SearchMediaUseCase.swift in Sources */,
 				656B2AB0296945CC00F6928F /* MediaDetailView.swift in Sources */,
+				651FE51E2973E38E003A563B /* MediaDetailRepository.swift in Sources */,
 				656B2AC62969611E00F6928F /* NetworkService.swift in Sources */,
 				656B2AD1296AB72A00F6928F /* AppDI.swift in Sources */,
 				656B2ABB2969567600F6928F /* Router.swift in Sources */,
 				65842D7D295891F800673EDF /* MediaListView.swift in Sources */,
+				651FE5182973D3EB003A563B /* MediaRealmDTO.swift in Sources */,
 				656B2AB529694C5000F6928F /* Double + Extension.swift in Sources */,
 				656B2AB2296946E800F6928F /* MediaDetailViewModel.swift in Sources */,
+				651FE52529742423003A563B /* NavigationLazyView.swift in Sources */,
 				65842D6B2958759900673EDF /* Media.swift in Sources */,
 				65842D7529588ABF00673EDF /* Button + Extension.swift in Sources */,
 				656B2ACB2969655800F6928F /* MediaSearchRouter.swift in Sources */,

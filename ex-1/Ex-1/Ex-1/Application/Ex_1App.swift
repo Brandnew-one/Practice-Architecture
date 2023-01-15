@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct Ex_1App: App {
+  let appDI = AppDI.shared
+
   var body: some Scene {
     WindowGroup {
-      MediaListView(viewModel: AppDI.shared.mediaListViewModel())
+      MediaListView(viewModel: appDI.mediaListViewModel(), appContainer: appDI)
+        .onAppear {
+          print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path)
+        }
     }
   }
 }

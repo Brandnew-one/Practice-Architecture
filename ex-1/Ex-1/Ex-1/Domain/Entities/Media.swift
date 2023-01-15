@@ -7,8 +7,9 @@
 
 import Foundation
 
+// TODO: - Error를 Domain Layer에서 정의하면 되지않을까?
 struct Media: Equatable, Identifiable {
-  let id: UUID = UUID()
+  let id: Int
   let name: String
   let originName: String
   let posterURL: String

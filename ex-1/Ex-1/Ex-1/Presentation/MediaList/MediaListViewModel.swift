@@ -42,7 +42,7 @@ final class MediaListViewModel: ViewModelType {
 
   func transform() {
     input.searchMediaSub.subject
-      .debounce(for: 0.2, scheduler: RunLoop.main)
+      .debounce(for: 0.5, scheduler: RunLoop.main)
       .flatMap { [weak self] search -> AnyPublisher<MediaPage, Never> in
         guard let self = self else {
           return Just(MediaPage(page: -1, totalPages: -1, medias: [])).eraseToAnyPublisher()
