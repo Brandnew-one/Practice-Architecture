@@ -11,8 +11,6 @@ import Foundation
 import Alamofire
 
 final class MediaRepositoryImpl {
-  // MARK: - DB
-//  private let dataBaseService: DataBaseService
 }
 
 extension MediaRepositoryImpl: MediaRepository {

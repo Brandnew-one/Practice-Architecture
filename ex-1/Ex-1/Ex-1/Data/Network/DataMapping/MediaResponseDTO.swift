@@ -21,6 +21,7 @@ struct MediaResponseDTO: Codable {
 
 extension MediaResponseDTO {
   struct MediaDTO: Codable {
+    let id: Int?
     let title: String?
     let originTitle: String?
     let posterPath: String?
@@ -28,6 +29,7 @@ extension MediaResponseDTO {
     let overview: String?
 
     private enum CodingKeys: String, CodingKey {
+      case id
       case title = "name"
       case originTitle = "original_name"
       case posterPath = "poster_path"
@@ -53,6 +55,7 @@ extension MediaResponseDTO {
 extension MediaResponseDTO.MediaDTO {
   func toDomain() -> Media {
     return .init(
+      id: id ?? -1,
       name: title ?? "",
       originName: originTitle ?? "",
       posterURL: ("https://image.tmdb.org/t/p/original") + (posterPath ?? "") ,

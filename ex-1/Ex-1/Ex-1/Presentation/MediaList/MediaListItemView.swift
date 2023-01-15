@@ -45,6 +45,7 @@ struct MediaListItemView_Previews: PreviewProvider {
     MediaListItemView(
       media:
         Media(
+          id: 0,
           name: "웬즈데이",
           originName: "Wednesday",
           posterURL: "https://image.tmdb.org/t/p/original/tNWCukAMubqisamYURvo5jw61As.jpg",
