@@ -14,21 +14,27 @@ final class MediaListViewModel: ViewModelType {
   struct Input {
     var searchMediaSub = BindingSubject<String>(value: "")
     fileprivate let searchButtonSub = PassthroughSubject<Void, Never>()
+    fileprivate let navigationSub = PassthroughSubject<Media, Never>()
   }
 
   enum Action {
     case searchButtonTapped
+    case navigationTapped(Media)
   }
 
   func action(_ action: Action) {
     switch action {
     case .searchButtonTapped:
       input.searchButtonSub.send()
+    case .navigationTapped(let media):
+      input.navigationSub.send(media)
     }
   }
 
   struct Output {
     var medias: [Media] = []
+    var isNavigationShow: Bool = false
+    var selectedMedia: Media?
   }
 
   var input = Input()
@@ -55,6 +61,14 @@ final class MediaListViewModel: ViewModelType {
       .sink(receiveValue: { [weak self] in
         guard let self = self else { return }
         self.output.medias = $0
+      })
+      .store(in: &cancellables)
+
+    input.navigationSub
+      .sink(receiveValue: { [weak self] in
+        guard let self = self else { return }
+        self.output.selectedMedia = $0
+        self.output.isNavigationShow = true
       })
       .store(in: &cancellables)
   }

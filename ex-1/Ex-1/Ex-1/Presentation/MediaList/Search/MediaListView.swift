@@ -17,19 +17,24 @@ struct MediaListView: View {
     NavigationView {
       ScrollView {
         LazyVStack {
-          ForEach(viewModel.output.medias, id: \.id) { media in
-            NavigationLink(
-              destination: {
+          // Empty View
+          NavigationLink(
+            isActive: $viewModel.output.isNavigationShow,
+            destination: {
+              if let media = viewModel.output.selectedMedia {
                 NavigationLazyView(
                   MediaDetailView(
                     viewModel: appContainer.mediaDetailViewModel(media)
                   )
                 )
-              },
-              label: {
-                MediaListItemView(media: media)
               }
-            )
+            },
+            label: { }
+          )
+          // List Cell Item
+          ForEach(viewModel.output.medias, id: \.id) { media in
+            MediaListItemView(media: media)
+              .wrapToButton { viewModel.action(.navigationTapped(media)) }
           }
         }
         .padding(.top, 20)
