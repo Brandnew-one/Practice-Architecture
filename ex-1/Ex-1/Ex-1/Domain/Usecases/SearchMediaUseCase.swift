@@ -20,7 +20,7 @@ protocol SearchMediaUseCase {
   func tvExcute(
     query: String,
     page: Int
-  ) -> AnyPublisher<MediaPage, Error>
+  ) -> AnyPublisher<Result<MediaPage, BranError>, Never>
 
   // MARK: - DB Logic
   func fetchMediaList() -> [Media]
@@ -54,7 +54,7 @@ final class DefaultSearchMediaUseCase: SearchMediaUseCase {
   func tvExcute(
     query: String,
     page: Int
-  ) -> AnyPublisher<MediaPage, Error> {
+  ) -> AnyPublisher<Result<MediaPage, BranError>, Never> {
     mediaRepository.fetchTv(query: query, page: page)
   }
 

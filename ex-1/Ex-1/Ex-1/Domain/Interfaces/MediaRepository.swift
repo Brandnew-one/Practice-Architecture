@@ -12,7 +12,7 @@ protocol MediaRepository {
   func fetchTv(
     query: String,
     page: Int
-  ) -> AnyPublisher<MediaPage, Error>
+  ) -> AnyPublisher<Result<MediaPage, BranError>, Never>
 
   func fetchMovie(
     query: String,

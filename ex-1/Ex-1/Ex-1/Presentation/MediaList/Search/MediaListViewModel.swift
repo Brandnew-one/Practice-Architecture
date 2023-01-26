@@ -49,31 +49,20 @@ final class MediaListViewModel: ViewModelType {
   func transform() {
     input.searchMediaSub.subject
       .debounce(for: 0.5, scheduler: RunLoop.main)
-      .flatMap { [weak self] search -> AnyPublisher<MediaPage, Never> in
+      .flatMap { [weak self] search -> AnyPublisher<Result<MediaPage, BranError>, Never> in
         guard let self = self else {
-          return Just(MediaPage(
-            page: -1,
-            totalPages: -1,
-            medias: [])
-          ).eraseToAnyPublisher()
+          return Just(Result.failure(BranError.unknown)).eraseToAnyPublisher()
         }
-        // Error받았을 때 Never보내줘야 돼서 빈값이나 임의의 Entity를 보내줘야만 함
         return self.searchMediaUsecase.tvExcute(query: search, page: 1)
-          .catch { err in
-            return Empty()
-          }
-//          .replaceError(
-//            with: MediaPage(
-//              page: -1,
-//              totalPages: -1,
-//              medias: [])
-//          )
-          .eraseToAnyPublisher()
       }
-      .map { $0.medias }
-      .sink(receiveValue: { [weak self] in
+      .sink(receiveValue: { [weak self] result in
         guard let self = self else { return }
-        self.output.medias = $0
+        switch result {
+        case .success(let mediaPage):
+          self.output.medias = mediaPage.medias
+        case .failure(let err):
+          print(err.message)
+        }
       })
       .store(in: &cancellables)
 

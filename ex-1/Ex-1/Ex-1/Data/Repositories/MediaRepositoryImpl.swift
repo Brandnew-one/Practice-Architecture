@@ -14,7 +14,10 @@ final class MediaRepositoryImpl {
 }
 
 extension MediaRepositoryImpl: MediaRepository {
-  func fetchTv(query: String, page: Int) -> AnyPublisher<MediaPage, Error> {
+  func fetchTv(
+    query: String,
+    page: Int
+  ) -> AnyPublisher<Result<MediaPage, BranError>, Never> {
     let requestDTO = MediaRequestDTO(query: query, page: page)
 
     return NetworkService.shared.session
@@ -22,8 +25,23 @@ extension MediaRepositoryImpl: MediaRepository {
       .validate(statusCode: 200..<300)
       .publishDecodable(type: MediaResponseDTO.self)
       .value()
-      .map { $0.toDomain() }
-      .mapError { $0 as Error }
+      .mapError { _ in
+        return BranError.decodeError
+      }
+      .tryMap {
+        if $0.page == 1 {
+          return Result.success($0.toDomain())
+        } else {
+          throw BranError.unknown
+        }
+      }
+      .catch { err -> AnyPublisher<Result<MediaPage, BranError>, Never> in
+        if let err = err as? BranError {
+          return Just(Result.failure(err)).eraseToAnyPublisher()
+        } else {
+          return Just(Result.failure(BranError.unknown)).eraseToAnyPublisher()
+        }
+      }
       .eraseToAnyPublisher()
   }
 
