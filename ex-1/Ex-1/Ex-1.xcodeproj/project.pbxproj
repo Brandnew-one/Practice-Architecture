@@ -29,6 +29,7 @@
 		656B2ACB2969655800F6928F /* MediaSearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B2ACA2969655800F6928F /* MediaSearchRouter.swift */; };
 		656B2ACE296AABEB00F6928F /* MediaRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B2ACD296AABEB00F6928F /* MediaRepositoryImpl.swift */; };
 		656B2AD1296AB72A00F6928F /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B2AD0296AB72A00F6928F /* AppDI.swift */; };
+		65763C782981677600CAC26B /* BranError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65763C772981677600CAC26B /* BranError.swift */; };
 		65842D5029585F5B00673EDF /* Ex_1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65842D4F29585F5B00673EDF /* Ex_1App.swift */; };
 		65842D5429585F5B00673EDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65842D5329585F5B00673EDF /* Assets.xcassets */; };
 		65842D5729585F5B00673EDF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65842D5629585F5B00673EDF /* Preview Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		656B2ACA2969655800F6928F /* MediaSearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSearchRouter.swift; sourceTree = "<group>"; };
 		656B2ACD296AABEB00F6928F /* MediaRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRepositoryImpl.swift; sourceTree = "<group>"; };
 		656B2AD0296AB72A00F6928F /* AppDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDI.swift; sourceTree = "<group>"; };
+		65763C772981677600CAC26B /* BranError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranError.swift; sourceTree = "<group>"; };
 		65842D4C29585F5B00673EDF /* Ex-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ex-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65842D4F29585F5B00673EDF /* Ex_1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ex_1App.swift; sourceTree = "<group>"; };
 		65842D5329585F5B00673EDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -205,6 +207,14 @@
 			path = DependecyInjection;
 			sourceTree = "<group>";
 		};
+		65763C762981672200CAC26B /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				65763C772981677600CAC26B /* BranError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		65842D4329585F5B00673EDF = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +277,7 @@
 		65842D672958740C00673EDF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				65763C762981672200CAC26B /* Error */,
 				65842D692958744B00673EDF /* Entities */,
 				65842D6D295877BB00673EDF /* Usecases */,
 				65842D6C2958779300673EDF /* Interfaces */,
@@ -450,6 +461,7 @@
 				656B2ABB2969567600F6928F /* Router.swift in Sources */,
 				65842D7D295891F800673EDF /* MediaListView.swift in Sources */,
 				651FE5182973D3EB003A563B /* MediaRealmDTO.swift in Sources */,
+				65763C782981677600CAC26B /* BranError.swift in Sources */,
 				656B2AB529694C5000F6928F /* Double + Extension.swift in Sources */,
 				656B2AB2296946E800F6928F /* MediaDetailViewModel.swift in Sources */,
 				651FE52529742423003A563B /* NavigationLazyView.swift in Sources */,

@@ -51,10 +51,23 @@ final class MediaListViewModel: ViewModelType {
       .debounce(for: 0.5, scheduler: RunLoop.main)
       .flatMap { [weak self] search -> AnyPublisher<MediaPage, Never> in
         guard let self = self else {
-          return Just(MediaPage(page: -1, totalPages: -1, medias: [])).eraseToAnyPublisher()
+          return Just(MediaPage(
+            page: -1,
+            totalPages: -1,
+            medias: [])
+          ).eraseToAnyPublisher()
         }
+        // Error받았을 때 Never보내줘야 돼서 빈값이나 임의의 Entity를 보내줘야만 함
         return self.searchMediaUsecase.tvExcute(query: search, page: 1)
-          .replaceError(with: MediaPage(page: -1, totalPages: -1, medias: []))
+          .catch { err in
+            return Empty()
+          }
+//          .replaceError(
+//            with: MediaPage(
+//              page: -1,
+//              totalPages: -1,
+//              medias: [])
+//          )
           .eraseToAnyPublisher()
       }
       .map { $0.medias }
