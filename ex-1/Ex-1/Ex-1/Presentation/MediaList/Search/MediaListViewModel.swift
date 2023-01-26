@@ -35,6 +35,7 @@ final class MediaListViewModel: ViewModelType {
     var medias: [Media] = []
     var isNavigationShow: Bool = false
     var selectedMedia: Media?
+    var toastMessage: String = ""
   }
 
   var input = Input()
@@ -60,14 +61,16 @@ final class MediaListViewModel: ViewModelType {
         // Error받았을 때 Never보내줘야 돼서 빈값이나 임의의 Entity를 보내줘야만 함
         return self.searchMediaUsecase.tvExcute(query: search, page: 1)
           .catch { err in
-            return Empty()
+            if let err = err as? BranError {
+              switch err {
+              case .unknown:
+                <#code#>
+              default:
+
+              }
+            }
+            return Empty(outputType: MediaPage.self, failureType: Never.self)
           }
-//          .replaceError(
-//            with: MediaPage(
-//              page: -1,
-//              totalPages: -1,
-//              medias: [])
-//          )
           .eraseToAnyPublisher()
       }
       .map { $0.medias }
