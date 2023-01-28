@@ -22,8 +22,16 @@ extension MediaRepositoryImpl: MediaRepository {
       .validate(statusCode: 200..<300)
       .publishDecodable(type: MediaResponseDTO.self)
       .value()
-      .map { $0.toDomain() }
-      .mapError { $0 as Error }
+      .mapError { _ in
+        return BranError.decodeError
+      }
+      .tryMap {
+        if $0.page == 0 {
+          return $0.toDomain()
+        } else {
+          throw BranError.unknown
+        }
+      }
       .eraseToAnyPublisher()
   }
 
