@@ -11,7 +11,8 @@ struct SavedMediaListView: View {
   @StateObject
   var viewModel: SavedMediaListViewModel
 
-  let appContainer: AppContainer
+  @EnvironmentObject
+  var appState: AppState
 
   var body: some View {
     NavigationView {
@@ -22,7 +23,7 @@ struct SavedMediaListView: View {
               destination: {
                 NavigationLazyView(
                   MediaDetailView(
-                    viewModel: appContainer.mediaDetailViewModel(media)
+                    viewModel: appState.di.mediaDetailViewModel(media)
                   )
                 )
               },

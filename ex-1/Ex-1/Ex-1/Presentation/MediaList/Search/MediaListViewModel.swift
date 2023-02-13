@@ -64,9 +64,11 @@ final class MediaListViewModel: ViewModelType {
             if let err = err as? BranError {
               switch err {
               case .unknown:
-                <#code#>
-              default:
-
+                print("UnKnown Error")
+              case .internalError:
+                print("Server Error")
+              case .decodeError:
+                print("Decode Error")
               }
             }
             return Empty(outputType: MediaPage.self, failureType: Never.self)
