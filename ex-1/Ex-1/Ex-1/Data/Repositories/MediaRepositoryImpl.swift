@@ -14,7 +14,10 @@ final class MediaRepositoryImpl {
 }
 
 extension MediaRepositoryImpl: MediaRepository {
-  func fetchTv(query: String, page: Int) -> AnyPublisher<MediaPage, Error> {
+  func fetchTv(
+    query: String,
+    page: Int
+  ) -> AnyPublisher<MediaPage, Error> {
     let requestDTO = MediaRequestDTO(query: query, page: page)
 
     return NetworkService.shared.session
@@ -26,7 +29,7 @@ extension MediaRepositoryImpl: MediaRepository {
         return BranError.decodeError
       }
       .tryMap {
-        if $0.page == 0 {
+        if $0.page == 1 {
           return $0.toDomain()
         } else {
           throw BranError.unknown
@@ -35,7 +38,10 @@ extension MediaRepositoryImpl: MediaRepository {
       .eraseToAnyPublisher()
   }
 
-  func fetchMovie(query: String, page: Int) -> AnyPublisher<MediaPage, Error> {
+  func fetchMovie(
+    query: String,
+    page: Int
+  ) -> AnyPublisher<MediaPage, Error> {
     let requestDTO = MediaRequestDTO(query: query, page: page)
 
     return NetworkService.shared.session

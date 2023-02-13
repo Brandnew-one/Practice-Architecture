@@ -11,7 +11,8 @@ struct RootTabView: View {
   @State
   var tabIndex: TabItem = .search
 
-  let appContainer: AppContainer
+  @EnvironmentObject
+  var appState: AppState
 
   var body: some View {
     tabView
@@ -22,7 +23,7 @@ extension RootTabView {
   @ViewBuilder
   var tabView: some View {
     TabView(selection: $tabIndex) {
-      MediaListView(viewModel: appContainer.mediaListViewModel(), appContainer: appContainer)
+      MediaListView(viewModel: appState.di.mediaListViewModel())
         .tag(TabItem.search)
         .tabItem {
           TabItem.search.image
@@ -30,7 +31,7 @@ extension RootTabView {
           Text(TabItem.search.title)
         }
 
-      SavedMediaListView(viewModel: appContainer.savedMediaListViewModel(), appContainer: appContainer)
+      SavedMediaListView(viewModel: appState.di.savedMediaListViewModel())
         .tag(TabItem.saved)
         .tabItem {
           TabItem.saved.image
