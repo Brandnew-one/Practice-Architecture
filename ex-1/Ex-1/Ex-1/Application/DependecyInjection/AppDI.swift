@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class AppDI: AppContainer {
+final class AppDI: AppDIInterface {
   static let shared = AppDI()
   private init() { }
 
