@@ -49,5 +49,4 @@ extension Data {
     return prettyPrintedString as String
   }
 }
-// swiftlint:enable indentation_width
 
