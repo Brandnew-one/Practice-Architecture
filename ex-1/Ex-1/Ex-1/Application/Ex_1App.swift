@@ -9,14 +9,19 @@ import SwiftUI
 
 @main
 struct Ex_1App: App {
-  let appState = AppState(di: AppDI.shared)
+  let appState = AppState(di: AppDI())
 
   var body: some Scene {
     WindowGroup {
       RootTabView()
         .environmentObject(appState)
         .onAppear {
-          print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path)
+          print(
+            FileManager.default.urls(
+              for: .documentDirectory,
+              in: .userDomainMask
+            ).first!.path
+          )
         }
     }
   }

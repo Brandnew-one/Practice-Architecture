@@ -8,42 +8,29 @@
 import Foundation
 
 final class AppDI: AppDIInterface {
-  static let shared = AppDI()
-  private init() { }
-
-  func mediaListViewModel() -> MediaListViewModel {
+  lazy var mediaUsecase: SearchMediaUseCase = {
     let mediaRepository: MediaRepository = MediaRepositoryImpl()
     let mediaDetailRepository: MediaDetailRepository = MediaDetailRepositoryImpl(RealmDataStorage.shared)
-
-    let usecase: DefaultSearchMediaUseCase = DefaultSearchMediaUseCase(
+    return DefaultSearchMediaUseCase(
       mediaRepository: mediaRepository,
       mediaDetailRepository: mediaDetailRepository
     )
+  }()
 
-    return MediaListViewModel(searchMediaUsecase: usecase)
+  func mediaListViewModel() -> MediaListViewModel {
+    return MediaListViewModel(searchMediaUsecase: mediaUsecase)
   }
 
   func savedMediaListViewModel() -> SavedMediaListViewModel {
-    let mediaRepository: MediaRepository = MediaRepositoryImpl()
-    let mediaDetailRepository: MediaDetailRepository = MediaDetailRepositoryImpl(RealmDataStorage.shared)
-
-    let usecase: DefaultSearchMediaUseCase = DefaultSearchMediaUseCase(
-      mediaRepository: mediaRepository,
-      mediaDetailRepository: mediaDetailRepository
-    )
-
-    return SavedMediaListViewModel(searchMediaUsecase: usecase)
+    return SavedMediaListViewModel(searchMediaUsecase: mediaUsecase)
   }
 
-  func mediaDetailViewModel(_ media: Media) -> MediaDetailViewModel {
-    let mediaRepository: MediaRepository = MediaRepositoryImpl()
-    let mediaDetailRepository: MediaDetailRepository = MediaDetailRepositoryImpl(RealmDataStorage.shared)
-
-    let usecase: DefaultSearchMediaUseCase = DefaultSearchMediaUseCase(
-      mediaRepository: mediaRepository,
-      mediaDetailRepository: mediaDetailRepository
+  func mediaDetailViewModel(
+    _ media: Media
+  ) -> MediaDetailViewModel {
+    return MediaDetailViewModel(
+      media: media,
+      usecase: mediaUsecase
     )
-
-    return MediaDetailViewModel(media: media, usecase: usecase)
   }
 }
