@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+  @EnvironmentObject
+  var appState: AppState
+
   var body: some View {
     VStack {
       Image(systemName: "globe")
         .imageScale(.large)
         .foregroundColor(.accentColor)
+
       Text("Hello, world!")
+
+      Text("\(appState.count)")
     }
     .padding()
-  }
-}
-
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
   }
 }

@@ -10,8 +10,10 @@ import SwiftUI
 @main
 struct DI_TestApp: App {
   var body: some Scene {
+    let appDI = AppState()
     WindowGroup {
-      ContentView()
+      RootView()
+        .environmentObject(appDI)
     }
   }
 }
