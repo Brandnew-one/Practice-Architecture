@@ -12,5 +12,6 @@
 * [Usecase와 Repository에 대하여](https://github.com/Brandnew-one/Practice-Architecture/blob/main/clean-architecture/doc/Usecase%2C%20Repository%20%EC%97%90%20%EB%8C%80%ED%95%98%EC%97%AC%20b57aa6ccb14a4d2f880e6567e70318d5.md)
 * [Dependency Injection에 대하여](https://github.com/Brandnew-one/Practice-Architecture/blob/main/clean-architecture/doc/Dependency%20Injection%20cacf452385f74179a576fb88099fd6c1.md)
   * [DI관련 트러블 슈팅 - 01](https://github.com/Brandnew-one/Practice-Architecture/issues/6)
+  * [DI관련 트러블 슈팅 - 02](https://github.com/Brandnew-one/Practice-Architecture/issues/8)
 
 
