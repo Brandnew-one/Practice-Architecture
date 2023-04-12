@@ -11,7 +11,6 @@ import ComposableArchitecture
 
 struct TodoClient {
   var fetchTodoList: () -> Effect<[Todo], Failure>
-
   struct Failure: Error, Equatable { }
 }
 

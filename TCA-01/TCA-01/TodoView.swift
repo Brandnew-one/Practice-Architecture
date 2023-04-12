@@ -12,9 +12,13 @@ import ComposableArchitecture
 struct TodoState: Equatable {
   var todos: [Todo] = []
   var isLoading: Bool = false
+  var text: String = ""
+  @BindingState var textField: String = ""
 }
 
-enum TodoAction: Equatable {
+enum TodoAction: Equatable, BindableAction {
+  case binding(BindingAction<TodoState>)
+  case textFieldChanged(String)
   case fetchList
   case fetchResponse(Result<[Todo], TodoClient.Failure>)
 }
@@ -26,6 +30,11 @@ struct TodoEnviornment {
 
 let todoReducer = AnyReducer<TodoState, TodoAction, TodoEnviornment> { state, action, environment in
   switch action {
+  case .binding:
+    return .none
+  case .textFieldChanged(let text):
+    state.text = text
+    return .none
   case .fetchList:
     enum FetchList { } // FIXME: -
     state.isLoading = true
@@ -62,6 +71,16 @@ struct TodoView: View {
         }
 
         ScrollView(showsIndicators: false) {
+          TextField("1", text: viewStore.binding(
+            get: \.text,
+            send: TodoAction.textFieldChanged
+          ))
+
+          TextField("2", text: viewStore.binding(\.$textField))
+
+          Text(viewStore.text)
+          Text(viewStore.textField)
+
           Button(
             action: {
               viewStore.send(.fetchList, animation: .default)
