@@ -16,9 +16,20 @@ struct TCA_01App: App {
     reducer: counterReducer,
     environment: CounterEnviornment()
   )
+  
+  let todoStore = Store(
+    initialState: TodoState(),
+    reducer: todoReducer,
+    environment: TodoEnviornment(
+      todoClient: TodoClient.live,
+      mainQueue: .main
+    )
+  )
+
   var body: some Scene {
     WindowGroup {
-      CounterView(store: counterStore)
+//      CounterView(store: counterStore)
+      TodoView(store: todoStore)
     }
   }
 }
