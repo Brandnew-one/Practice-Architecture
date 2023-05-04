@@ -40,6 +40,7 @@ struct MovieListReducer: ReducerProtocol {
       }
       return .none
     case .selectMovie(let movie):
+      state.isNavigation = false // FIXME: -
       state.selectMovie = movie
       return .run { send in
         await send(.navigation)

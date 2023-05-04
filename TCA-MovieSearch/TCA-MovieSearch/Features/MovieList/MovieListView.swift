@@ -37,7 +37,7 @@ struct MovieListView: View {
               NavigationLink(
                 isActive: Binding(
                   get: { viewStore.isNavigation },
-                  set: { _,_ in  }
+                  set: { _, _ in  }
                 ),
                 destination: {
                   if let selectedMovie = viewStore.selectMovie {

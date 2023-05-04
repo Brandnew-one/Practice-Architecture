@@ -18,7 +18,7 @@ struct MovieDetailView: View {
     WithViewStore(store) { viewStore in
       ScrollView(showsIndicators: false) {
         VStack(alignment: .leading, spacing: 20) {
-          KFImage(URL(string: "viewModel.output.posterURL"))
+          KFImage(URL(string: viewStore.selectedMovie.posterURL))
             .resizable()
             .frame(width: deviceWidth, height: deviceWidth)
 
@@ -29,7 +29,7 @@ struct MovieDetailView: View {
           overviewSection
         }
       }
-      .navigationTitle("viewModel.output.navigationTitle")
+      .navigationTitle(viewStore.selectedMovie.originName)
   //    .toolbar {
   //      ToolbarItem(placement: .navigationBarTrailing) {
   //        if viewModel.output.isSaved {
@@ -45,32 +45,39 @@ struct MovieDetailView: View {
   }
 }
 
+// TODO: - WithViewStore 안에 WithViewStore가 또 들어가도 되는건지?
 extension MovieDetailView {
   @ViewBuilder
   var titleSection: some View {
-    Text("viewModel.output.title")
-      .font(.title)
-      .fontWeight(.semibold)
-  }
-
-  @ViewBuilder
-  var ratingSection: some View {
-    HStack {
-      Image(systemName: "star.fill")
-        .resizable()
-        .renderingMode(.template)
-        .foregroundColor(.yellow)
-        .frame(width: 30, height: 30)
-
-      Text("viewModel.output.rating")
+    WithViewStore(store) { viewstore in
+      Text(viewstore.selectedMovie.name)
+        .font(.title)
         .fontWeight(.semibold)
     }
   }
 
   @ViewBuilder
+  var ratingSection: some View {
+    WithViewStore(store) { viewStore in
+      HStack {
+        Image(systemName: "star.fill")
+          .resizable()
+          .renderingMode(.template)
+          .foregroundColor(.yellow)
+          .frame(width: 30, height: 30)
+
+        Text("\(viewStore.selectedMovie.rating)")
+          .fontWeight(.semibold)
+      }
+    }
+  }
+
+  @ViewBuilder
   var overviewSection: some View {
-    Text("viewModel.output.overView")
-      .font(.body)
-      .fontWeight(.medium)
+    WithViewStore(store) { viewStore in
+      Text(viewStore.selectedMovie.overview)
+        .font(.body)
+        .fontWeight(.medium)
+    }
   }
 }
