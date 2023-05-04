@@ -14,29 +14,49 @@ struct MovieListView: View {
 
   var body: some View {
     WithViewStore(store) { viewStore in
-      VStack {
-        HStack {
-          TextField(
-            "Search Field",
-            text: Binding(
-              get: { viewStore.searchText },
-              set: { viewStore.send(.searchTextChanged($0)) }
+      NavigationView {
+        VStack {
+          HStack {
+            TextField(
+              "Search Field",
+              text: Binding(
+                get: { viewStore.searchText },
+                set: { viewStore.send(.searchTextChanged($0)) }
+              )
             )
-          )
 
-          Button(
-            action: { viewStore.send(.search) },
-            label: { Text("Search") }
-          )
-        }
-        .padding()
+            Button(
+              action: { viewStore.send(.search) },
+              label: { Text("Search") }
+            )
+          }
+          .padding()
 
-        ScrollView(showsIndicators: false) {
-          LazyVStack(spacing: 10) {
+          ScrollView(showsIndicators: false) {
+            LazyVStack(spacing: 10) {
+              NavigationLink(
+                isActive: Binding(
+                  get: { viewStore.isNavigation },
+                  set: { _,_ in  }
+                ),
+                destination: {
+                  if let selectedMovie = viewStore.selectMovie {
+                    let store = Store(
+                      initialState: MovieDetailReducer.State(selectedMovie: selectedMovie),
+                      reducer: MovieDetailReducer()
+                    )
+                    MovieDetailView(store: store)
+                  }
+                },
+                label: { EmptyView() }
+              )
 
-            ForEach(viewStore.searchResult, id: \.self) { result in
-              Text(result)
-                .font(.largeTitle)
+              ForEach(viewStore.searchResult) { result in
+                Button(
+                  action: { viewStore.send(.selectMovie(result)) },
+                  label: { MovieListRow(movie: result) }
+                )
+              }
             }
           }
         }
