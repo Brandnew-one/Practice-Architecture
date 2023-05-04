@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+import ComposableArchitecture
+
 @main
 struct TCA_MovieSearchApp: App {
+  let movieListStore = Store(
+    initialState: MovieListReducer.State(),
+    reducer: MovieListReducer()
+  )
+  
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      MovieListView(store: movieListStore)
     }
   }
 }
